@@ -1,0 +1,18 @@
+stages:
+  - build 
+  - manual_build
+
+
+build: 
+  stage: build 
+  script:
+    - echo "$ENV_DEV" > .env
+    - docker-compose up -d --build
+  
+
+manual_build:
+  stage: manual_build
+  script:
+    - echo "$ENV_DEV" > .env
+    - docker-compose up -d --build
+  when: manual

@@ -1,0 +1,26 @@
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+exclude = [
+    "migrations",
+    "media",
+    "static",
+]
+ignore = [
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "B904",  # raise-without-from-inside-except
+]
+line-length = 100
+
+[tool.ruff.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+"src/users/models/user_models.py" = ["F821"]  # ignore UserPermission, PersonalInfo in models
+"core/share/controller_base/base.py" = ["B009", "C417"] # the author of this file can rewrite
+"core/share/controller_base/router.py" = ["B006"]
